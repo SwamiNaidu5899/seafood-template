@@ -140,7 +140,6 @@ body {
 
 .section-title {
   font-size: 5rem;
-  font-weight: 800;
   margin-bottom: 30px;
   color: #333;
 }
@@ -201,6 +200,7 @@ body {
 .product-offer {
   color: #ff4d4d;
   font-weight: bold;
+  margin-top: 8px;
 }
 
 .actions {
