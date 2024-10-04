@@ -8,6 +8,7 @@ import Footer from "./Components/Footer";
 import 'aos/dist/aos.css'; 
 import AOS from "aos";
 import TopSellingProducts from './Components/TopSellingProducts';
+import ContactUs from './Components/ContactUs';
 
 const App = () => {
   useEffect(() => {
@@ -23,9 +24,11 @@ const App = () => {
       <TopSellingProducts/>
       <Products />
       <About />
+      <ContactUs/>
       <Footer />
     </div>
   );
 };
 
 export default App;
+

@@ -1,7 +1,15 @@
 import React, { useState } from "react";
 import { FaHeart, FaCartPlus } from "react-icons/fa";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const TopSellingProducts = () => {
+
+  const cartNotify = () => toast.success('Item is added to Cart')
+  const WlNotify = () => toast.info('Item is added to WishList')
+
+  
   const products = [
     {
       id: 1,
@@ -35,7 +43,7 @@ const TopSellingProducts = () => {
 
   return (
     <section className="top-selling-section" data-aos = 'zoom-in'>
-      <h2 className="section-title">Top Selling Products</h2>
+      <h2 className="section-title">Top Products</h2>
       <div className="product-grid">
         {products.map((product) => (
           <div key={product.id} className="product-card" data-aos='fade-up'>
@@ -47,10 +55,11 @@ const TopSellingProducts = () => {
                 <p className="product-offer">{product.offer}% OFF</p>
               </div>
               <div className="actions">
-                <button className="wishlist-button">
+                <button onClick={WlNotify} className="wishlist-button">
                   <FaHeart /> Wishlist
                 </button>
-                <button className="cart-button">
+                <ToastContainer/>
+                <button onClick={cartNotify} className="cart-button">
                   <FaCartPlus /> Add to Cart
                 </button>
               </div>
