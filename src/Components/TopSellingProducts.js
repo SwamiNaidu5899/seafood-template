@@ -1,15 +1,19 @@
-import React, { useState } from "react";
+// src/components/TopSellingProducts.js
+
+import React from "react";
 import { FaHeart, FaCartPlus } from "react-icons/fa";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import { useCart } from '../Context/CartContext';
+import { useWishlist } from '../Context/WishlistContext';
 
 const TopSellingProducts = () => {
+  const { addToCart } = useCart();
+  const { addToWishlist } = useWishlist();
 
-  const cartNotify = () => toast.success('Item is added to Cart')
-  const WlNotify = () => toast.info('Item is added to WishList')
+  // const cartNotify = () => toast.success('Item added to Cart');
+  // const WlNotify = () => toast.info('Item added to Wishlist');
 
-  
   const products = [
     {
       id: 1,
@@ -33,16 +37,16 @@ const TopSellingProducts = () => {
       image: "https://crabs.com/cdn/shop/products/BillysLobsterTail.jpg?v=1675220375",
     },
     {
-        id: 4,
-        name: "Chicken",
-        price: 99.99,
-        offer: 20,
-        image: "https://godavaricuts.com/cdn/shop/files/wwtwhzvhblqunlp1640269156619_Original_1_8b5c5fdf-f3ac-46b2-a9cc-3c193f6ba3e4_430x.jpg?v=1682399160",
-      }
+      id: 4,
+      name: "Chicken",
+      price: 99.99,
+      offer: 20,
+      image: "https://godavaricuts.com/cdn/shop/files/wwtwhzvhblqunlp1640269156619_Original_1_8b5c5fdf-f3ac-46b2-a9cc-3c193f6ba3e4_430x.jpg?v=1682399160",
+    }
   ];
 
   return (
-    <section className="top-selling-section" data-aos = 'zoom-in'>
+    <section className="top-selling-section" data-aos='zoom-in'>
       <h2 className="section-title">Top Products</h2>
       <div className="product-grid">
         {products.map((product) => (
@@ -55,11 +59,23 @@ const TopSellingProducts = () => {
                 <p className="product-offer">{product.offer}% OFF</p>
               </div>
               <div className="actions">
-                <button onClick={WlNotify} className="wishlist-button">
+                <button 
+                  onClick={() => {
+                    addToWishlist(product);
+                    // WlNotify();
+                  }} 
+                  className="wishlist-button"
+                >
                   <FaHeart /> Wishlist
                 </button>
-                <ToastContainer/>
-                <button onClick={cartNotify} className="cart-button">
+                <ToastContainer />
+                <button 
+                  onClick={() => {
+                    addToCart(product);
+                    // cartNotify();
+                  }} 
+                  className="cart-button"
+                >
                   <FaCartPlus /> Add to Cart
                 </button>
               </div>
