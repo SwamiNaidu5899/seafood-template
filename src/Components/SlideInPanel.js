@@ -1,8 +1,7 @@
 
 import React from 'react';
-import Cart from './Cart'; // Assuming you have Cart component
-import Wishlist from './Wishlist'; // Assuming you have Wishlist component
-
+import Cart from './Cart';
+import Wishlist from './Wishlist'; 
 const SlideInPanel = ({ isVisible, closePanel, type }) => {
   return (
     <div className={`slide-in-panel ${isVisible ? 'visible' : ''}`}>

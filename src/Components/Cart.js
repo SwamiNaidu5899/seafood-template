@@ -1,6 +1,5 @@
 import React from 'react';
 import { useCart } from '../Context/CartContext'; 
-import { Link } from 'react-router-dom';
 
 const Cart = ({ toggleCart }) => {
   const { cartItems, removeFromCart } = useCart(); 
@@ -27,7 +26,6 @@ const Cart = ({ toggleCart }) => {
           ))}
         </ul>
       )}
-      <Link to={'/'}>Home</Link>
     </div>
   );
 };

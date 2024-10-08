@@ -26,12 +26,12 @@ const App = () => {
 
   const toggleCart = () => {
     setCartOpen(!isCartOpen);
-    if (isWishlistOpen) setWishlistOpen(false); // Close wishlist if it's open
+    if (isWishlistOpen) setWishlistOpen(false);
   };
 
   const toggleWishlist = () => {
     setWishlistOpen(!isWishlistOpen);
-    if (isCartOpen) setCartOpen(false); // Close cart if it's open
+    if (isCartOpen) setCartOpen(false);
   };
 
   return (
@@ -41,20 +41,20 @@ const App = () => {
           <Router>
             <Header toggleCart={toggleCart} toggleWishlist={toggleWishlist} />
             <Hero />
+            <TopSellingProducts/>
             <Products />
             <About />
             <Footer />
             <Routes>
-              <Route path="/" element={<TopSellingProducts />} />
               <Route path="/cart" element={<Cart />} />
               <Route path="/wishlist" element={<Wishlist />} />
             </Routes>
-            {/* Cart Slider */}
-            <div className={`slider-one ${isCartOpen ? 'open' : ''}`}>
+            <div className={`slider-one cart-slider ${isCartOpen ? 'open' : ''}`}>
+              <button className="close-btn" onClick={toggleCart}>×</button>
               <Cart toggleCart={toggleCart} />
             </div>
-            {/* Wishlist Slider */}
-            <div className={`slider-one ${isWishlistOpen ? 'open' : ''}`}>
+            <div className={`slider-one wishlist-slider ${isWishlistOpen ? 'open' : ''}`}>
+              <button className="close-btn" onClick={toggleWishlist}>×</button>
               <Wishlist toggleWishlist={toggleWishlist} />
             </div>
           </Router>
